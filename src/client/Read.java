@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Read implements Runnable {
 	DataInputStream in;
 
-	private static string serverPrefix = "[SERVER]: ";
+	private static String serverPrefix = "[SERVER]: ";
 		
 	public Read(Socket socket) throws IOException {
 		this.in = new DataInputStream(socket.getInputStream());
