@@ -5,48 +5,35 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class Client {
+
 	static void main(String[] args){
-		start (); 
+		start(); 
 	}
+
 	static int port = 6666;
 	static String host = "localhost";
 	static Socket socket;
-	
-	static String exitCommand = "EXIT";
 
 	static void start() {
 		try {
-			socket = new Socket(host, port);
-			output = new DataOutputStream(socket.getOutputStream());
-			input = new DataInputStream(socket.getInputStream());
-			reader = new InputStreamReader(System.in);
-			bufferedReader= new BufferedReader(reader);
-			boolean shouldRun= true;
-			
-			String clientMessage = "";
-			String serverMessage = "";
-			
-			while(shouldRun=true)
-			{
-				clientMessage = BufferedReader.readLine();
-				shouldRun = !clientMsg.toUpperCase().equals(exitCommand);
-						
-				dataOutputStream.writeUTF(clientMessage);
-				flushOutpuStream.flush();
+			var socket = new Socket(host, port);				
 				
-				dataInputStream.readUTF(serverMessage);
+			var w = new Write(socket);
+			var r = new Read(socket);
 				
-				System.out.println("[SERVER]: " +serverMessage);
+			new Thread(w).start();
+			new Thread(r).start();
+								
+			//socket.close();
+			//dataInputStream.close();
+			//dataOutputStream.close();
 				
-			}
-			
-			
-		
 		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 }
