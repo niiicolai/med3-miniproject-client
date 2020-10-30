@@ -8,7 +8,8 @@ import java.net.Socket;
 
 public class Write implements Runnable {
 		
-	DataOutputStream out;
+	private DataOutputStream out;
+	private String clientMsg = "";
 		
 	public Write(Socket socket) throws IOException {
 		this.out = new DataOutputStream(socket.getOutputStream());
@@ -18,18 +19,23 @@ public class Write implements Runnable {
 	public void run() {
 		var reader = new InputStreamReader(System.in);
 		var bufferedReader = new BufferedReader(reader);
-		String clientMsg = "";
-		while (true)
-		{
-			try {
+		
+		try {
+			// Message the server the name as the first message
+			message(Setup.name);
+
+			while (true)
+			{
 				clientMsg = bufferedReader.readLine();
-				out.writeUTF(clientMsg);
-				out.flush();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				message(clientMsg);
 			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
-		
+
+	public void message(String msg) throws IOException {
+		out.writeUTF(msg);
+		out.flush();
+	}
 }

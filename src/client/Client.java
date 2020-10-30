@@ -6,15 +6,18 @@ import java.net.UnknownHostException;
 
 public class Client {
 
-	static void main(String[] args){
+	public static void main(String[] args) {
 		setup(); 
 	}
+
+	private static final String welcomeMsg = "Welcome to the client";
+	private static final String connectionErrorMsg = "Couldn't connect to server. Please try again.";
 
 	static int port = 6666;
 	static String host = "localhost";
 	static Socket socket;
 
-	static void start() {
+	private static void start() {
 		try {
 			var socket = new Socket(host, port);				
 				
@@ -29,19 +32,26 @@ public class Client {
 			//dataOutputStream.close();
 				
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			reset();
+		} catch (SocketException e) {
+			reset();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+
+	private static void reset() {
+		System.out.println(connectionErrorMsg);		
+		setup();
+	}
 	
-	  public static void setup() {
-			Setup.setupName();
-			Setup.setupHost();
-			Setup.setupPort();
+	public static void setup() {
+		System.out.println(welcomeMsg);
+
+		Setup.setupName();
+		Setup.setupHost();
+		Setup.setupPort();
 			
-			start();
-		}
+		start();
+	}
 }
