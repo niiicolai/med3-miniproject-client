@@ -7,7 +7,7 @@ import java.net.UnknownHostException;
 public class Client {
 
 	static void main(String[] args){
-		start(); 
+		setup(); 
 	}
 
 	static int port = 6666;
@@ -36,4 +36,12 @@ public class Client {
 			e.printStackTrace();
 		}
 	}
+	
+	  public static void setup() {
+			Setup.setupName();
+			Setup.setupHost();
+			Setup.setupPort();
+			
+			start();
+		}
 }
