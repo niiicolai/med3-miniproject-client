@@ -6,13 +6,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
-public class Write implements Runnable {
+public class Write extends ClientThread {
 		
 	private DataOutputStream out;
 	private String clientMsg = "";
-		
-	public Write(Socket socket) throws IOException {
+	private Read read; 
+	private String exitCommand = "EXIT";
+	
+	public Write(Socket socket,Read read) throws IOException {
 		this.out = new DataOutputStream(socket.getOutputStream());
+		this.read = read;
 	}
 	
 	@Override
@@ -24,11 +27,14 @@ public class Write implements Runnable {
 			// Message the server the name as the first message
 			message(Setup.name);
 
-			while (true)
+			while (!isStopped())
 			{
 				clientMsg = bufferedReader.readLine();
 				message(clientMsg);
 			}
+			out.close ();
+			read.stop ();
+			Client.stop();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -37,5 +43,9 @@ public class Write implements Runnable {
 	public void message(String msg) throws IOException {
 		out.writeUTF(msg);
 		out.flush();
+		
+		if (msg.toUpperCase().equals(exitCommand)) {
+			stop();
+		}
 	}
 }

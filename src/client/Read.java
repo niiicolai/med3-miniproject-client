@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Read implements Runnable {
+public class Read extends ClientThread {
 	DataInputStream in;
 
 	private static String serverPrefix = "[SERVER]: ";
@@ -16,12 +16,17 @@ public class Read implements Runnable {
 		
 	@Override
 	public void run() {
-		while (true) {
+		while (!isStopped()) {
 			var s = new Scanner(in);
 			if (s.hasNextLine()) {
 				var line = s.nextLine();
 				System.out.println(serverPrefix + line.replaceAll("#n","\n"));
 			}
+		}
+		try {
+			in.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }

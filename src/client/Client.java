@@ -2,6 +2,7 @@ package client;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 
 public class Client {
@@ -19,18 +20,14 @@ public class Client {
 
 	private static void start() {
 		try {
-			var socket = new Socket(host, port);				
+			socket = new Socket(host, port);				
 				
-			var w = new Write(socket);
 			var r = new Read(socket);
+			var w = new Write(socket,r);
 				
 			new Thread(w).start();
 			new Thread(r).start();
-								
-			//socket.close();
-			//dataInputStream.close();
-			//dataOutputStream.close();
-				
+												
 		} catch (UnknownHostException e) {
 			reset();
 		} catch (SocketException e) {
@@ -53,5 +50,8 @@ public class Client {
 		Setup.setupPort();
 			
 		start();
+	}
+	public static void stop () throws IOException {
+		socket.close();
 	}
 }
