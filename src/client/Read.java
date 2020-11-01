@@ -6,7 +6,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Read extends ClientThread {
-	DataInputStream in;
+	private DataInputStream in;
 
 	private static String serverPrefix = "[SERVER]: ";
 		

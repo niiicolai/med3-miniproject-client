@@ -14,13 +14,11 @@ public class Client {
 	private static final String welcomeMsg = "Welcome to the client";
 	private static final String connectionErrorMsg = "Couldn't connect to server. Please try again.";
 
-	static int port = 6666;
-	static String host = "localhost";
-	static Socket socket;
+	private static Socket socket;
 
 	private static void start() {
 		try {
-			socket = new Socket(host, port);				
+			socket = new Socket(Setup.host, Setup.port);				
 				
 			var r = new Read(socket);
 			var w = new Write(socket,r);
