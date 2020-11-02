@@ -32,7 +32,3 @@ This repository contains the code for the client for the mini-project. The goal 
   - [UML Class diagram](https://github.com/niiicolai/med3-miniproject-client/wiki/UML-Class-diagram)
   - [UML Use Case diagram](https://github.com/niiicolai/med3-miniproject-client/wiki/UML-Use-Case-diagram)
   - [UML Sequence diagram](https://github.com/niiicolai/med3-miniproject-client/wiki/UML-sequence-diagram)
-
----
-
-![Demo GIF](https://github.com/niiicolai/med3-miniproject-client/blob/main/Demo.gif?raw=true)
