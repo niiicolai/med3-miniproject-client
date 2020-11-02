@@ -13,6 +13,9 @@ Use the links below to read information about the server or the client for this 
   - [Handler.java](https://github.com/niiicolai/med3-miniproject-server/wiki/Handler.java)
   - [CommandHandler.java](https://github.com/niiicolai/med3-miniproject-server/wiki/CommandHandler.java)
   - [Lobby.java](https://github.com/niiicolai/med3-miniproject-server/wiki/Lobby.java)
+  - [UML Class diagram](https://github.com/niiicolai/med3-miniproject-server/wiki/UML-Class-diagram)
+  - [UML Use Case diagram](https://github.com/niiicolai/med3-miniproject-server/wiki/UML-Use-Case-diagram)
+  - [UML Sequence diagram](https://github.com/niiicolai/med3-miniproject-server/wiki/UML-sequence-diagram)
 
 ---
 
@@ -25,3 +28,6 @@ Use the links below to read information about the server or the client for this 
   - [ClientThread.Java](https://github.com/niiicolai/med3-miniproject-client/wiki/ClientThread.Java)
   - [Write.java](https://github.com/niiicolai/med3-miniproject-client/wiki/Write.java)
   - [Read.java](https://github.com/niiicolai/med3-miniproject-client/wiki/Write.java)
+  - [UML Class diagram](https://github.com/niiicolai/med3-miniproject-client/wiki/UML-Class-diagram)
+  - [UML Use Case diagram](https://github.com/niiicolai/med3-miniproject-client/wiki/UML-Use-Case-diagram)
+  - [UML Sequence diagram](https://github.com/niiicolai/med3-miniproject-client/wiki/UML-sequence-diagram)
